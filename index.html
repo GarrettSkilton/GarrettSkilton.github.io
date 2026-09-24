@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Garrett Skilton - Portfolio</title>
-<meta name="description" content="Portfolio and résumé of Garrett Skilton, IT professional seeking roles in DevOps, Network Administration, and System Administration.">
+<meta name="description" content="Portfolio and résumé of Garrett Skilton, IT professional and Information Systems student seeking roles in DevOps, Network Administration, and System Administration.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 
-  /* ---------- Design tokens ---------- */
   :root{
     --sky-1:#eafcff;
     --sky-2:#d6f1ff;
@@ -32,7 +31,6 @@
     --shadow:rgba(15,90,150,0.25);
   }
 
-  /* ---------- Reset & base ---------- */
   *,*::before,*::after{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
   body{
@@ -67,7 +65,6 @@
   .section-head{ text-align:center; max-width:640px; margin:0 auto 48px; }
   .section-head p{ color:var(--navy-soft); margin:0; }
 
-  /* ---------- Ambient bubble layer ---------- */
   .bubble-layer{
     position:fixed;
     inset:0;
@@ -93,7 +90,6 @@
     100%{ transform:translateY(-115vh) scale(1.06); opacity:0; }
   }
 
-  /* ---------- Nav ---------- */
   .nav-glass{
     position:fixed;
     top:16px;
@@ -151,7 +147,6 @@
     color:#fff;
   }
 
-  /* ---------- Buttons ---------- */
   .btn-glossy, .btn-outline-glossy{
     position:relative;
     display:inline-flex;
@@ -191,7 +186,6 @@
     filter:brightness(1.04);
   }
 
-  /* ---------- Glass panel ---------- */
   .glass-panel{
     background:var(--glass);
     border:1px solid var(--glass-border);
@@ -202,7 +196,6 @@
     padding:48px;
   }
 
-  /* ---------- Hero ---------- */
   .hero{
     position:relative;
     z-index:1;
@@ -275,7 +268,6 @@
     z-index:1;
   }
 
-  /* ---------- About ---------- */
   .about-grid{
     display:grid;
     grid-template-columns:1.3fr 0.9fr;
@@ -310,7 +302,6 @@
   }
   .stat-orb .label{ font-size:0.85rem; color:var(--navy-soft); }
 
-  /* ---------- Skills ---------- */
   .skills-grid{
     display:flex;
     flex-wrap:wrap;
@@ -340,7 +331,6 @@
   .chip-teal{ background:linear-gradient(180deg, #7ff0e6, var(--aero-teal) 55%, var(--aero-teal-deep)); }
   .chip-green{ background:linear-gradient(180deg, #c3ef94, var(--leaf) 55%, var(--leaf-deep)); }
 
-  /* ---------- Timeline ---------- */
   .timeline{ display:flex; flex-direction:column; }
   .timeline-item{ display:flex; gap:24px; }
   .timeline-marker{ display:flex; flex-direction:column; align-items:center; flex-shrink:0; width:20px; }
@@ -393,7 +383,6 @@
     background:var(--aero-teal-deep);
   }
 
-  /* ---------- Projects ---------- */
   .projects-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
@@ -453,7 +442,6 @@
   }
   .project-link:hover{ border-color:var(--aero-blue-deep); }
 
-  /* ---------- Contact ---------- */
   .contact-panel{ text-align:center; max-width:680px; margin:0 auto; }
   .contact-panel p{ color:var(--navy-soft); }
   .social-orbs{ display:flex; gap:18px; justify-content:center; margin:28px 0 32px; }
@@ -472,7 +460,6 @@
   .social-orb:hover{ transform:translateY(-4px) scale(1.05); }
   .social-orb svg{ width:22px; height:22px; }
 
-  /* ---------- Footer ---------- */
   footer{
     position:relative; z-index:1;
     text-align:center;
@@ -487,7 +474,6 @@
     margin:0 auto 18px;
   }
 
-  /* ---------- Responsive ---------- */
   @media (max-width:760px){
     .section{ padding:80px 0; }
     .hero{ padding:120px 20px 90px; min-height:auto; }
@@ -504,11 +490,6 @@
   }
 
 
-  /* =====================================================================
-     Frutiger Aero motion layer
-     Everything animates transform / opacity / translate only (GPU-composited),
-     nothing animates blur, layout, or backdrop-filter.
-     ===================================================================== */
   :root{ --ease-out:cubic-bezier(.22,.8,.24,1); --ease-bubble:cubic-bezier(.34,1.45,.64,1); }
 
   /* Sky glow that slowly breathes at the top of the viewport */
@@ -519,12 +500,10 @@
   }
   @keyframes sunPulse{ 0%,100%{opacity:.65} 50%{opacity:1} }
 
-  /* Bubbles: gentle sideways sway + iridescent rim */
   .bubble{ animation-name:floatUp, sway; }
   .bubble:nth-child(odd){ box-shadow:inset 0 0 8px rgba(255,255,255,.6), inset -3px -3px 7px rgba(31,214,200,.28); }
   @keyframes sway{ 0%,100%{translate:0 0} 25%{translate:18px 0} 75%{translate:-18px 0} }
 
-  /* Scroll progress bar */
   .scroll-progress{
     position:fixed; top:0; left:0; right:0; height:4px; z-index:101; pointer-events:none;
     transform-origin:0 50%; transform:scaleX(0);
@@ -532,7 +511,6 @@
     box-shadow:0 0 10px rgba(31,214,200,.6);
   }
 
-  /* Nav */
   .nav-glass{ animation:navDrop .9s var(--ease-out) .1s both; }
   @keyframes navDrop{ from{opacity:0; transform:translateX(-50%) translateY(-26px)} to{opacity:1; transform:translateX(-50%)} }
   .nav-links a{ transition:background .35s var(--ease-out), color .35s var(--ease-out); }
@@ -540,7 +518,6 @@
   .nav-logo{ transition:transform .5s var(--ease-bubble); }
   .nav-logo:hover{ transform:scale(1.1) rotate(-8deg); }
 
-  /* Hero: drifting clouds, floating orb with water ripples */
   .hero-cloud{ animation:cloudDrift 30s ease-in-out infinite alternate; }
   .hero-cloud + .hero-cloud{ animation-duration:38s; animation-direction:alternate-reverse; }
   @keyframes cloudDrift{ from{translate:0 0} to{translate:70px 12px} }
@@ -554,11 +531,9 @@
   .avatar-orb::after{ animation-delay:3.65s; }
   @keyframes ripple{ 0%{transform:scale(1); opacity:.7} 100%{transform:scale(1.9); opacity:0} }
 
-  /* Gentle "breathing" wave */
   .wave-divider{ transform-origin:50% 100%; animation:waveBreathe 10s ease-in-out infinite; }
   @keyframes waveBreathe{ 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(1.14)} }
 
-  /* Glossy sweep on buttons + chips */
   .btn-glossy, .btn-outline-glossy{ transition:transform .35s var(--ease-out), box-shadow .35s var(--ease-out), filter .35s var(--ease-out); }
   .btn-glossy::after, .btn-outline-glossy::after, .skill-chip::after{
     content:''; position:absolute; top:0; bottom:0; left:0; width:45%; pointer-events:none;
@@ -574,7 +549,6 @@
   .hero .btn-glossy:hover::after{ animation:none; }
   @keyframes glint{ 0%,70%{transform:translateX(-160%) skewX(-18deg)} 100%{transform:translateX(320%) skewX(-18deg)} }
 
-  /* Skill chips: bubbly staggered pop-in, springy hover */
   .skill-chip{ transition:transform .4s var(--ease-bubble), box-shadow .4s var(--ease-out); }
   .skill-chip:hover{ transform:translateY(-4px) scale(1.06); box-shadow:0 14px 24px rgba(20,100,160,.3), inset 0 1px 1px rgba(255,255,255,.5); }
   .js .skills-grid:not(.settled) .skill-chip{
@@ -584,7 +558,6 @@
   }
   .js .skills-grid.in:not(.settled) .skill-chip{ opacity:1; transform:none; }
 
-  /* Scroll reveals (classes are added by the script; content stays visible without it) */
   .js .reveal{
     opacity:0; transform:translateY(28px) scale(.97); will-change:opacity,transform;
     transition:opacity .9s var(--ease-out), transform .9s var(--ease-out); transition-delay:var(--d,0s);
@@ -595,7 +568,6 @@
   .js .timeline-item.reveal .timeline-line{ transform:scaleY(0); transform-origin:top; transition:transform 1.1s var(--ease-out) .4s; }
   .js .timeline-item.reveal.in .timeline-dot, .js .timeline-item.reveal.in .timeline-line{ transform:none; }
 
-  /* Timeline: "current role" ripple, card lift */
   .timeline-item:first-child .timeline-dot{ position:relative; }
   .timeline-item:first-child .timeline-dot::after{
     content:''; position:absolute; inset:0; border-radius:50%; border:2px solid var(--aero-blue); opacity:0; pointer-events:none;
@@ -606,12 +578,10 @@
   .timeline-card:hover{ transform:translateY(-3px); box-shadow:0 18px 38px rgba(15,90,150,.22), inset 0 1px 0 rgba(255,255,255,.6); }
   .stat-orb:hover{ transform:translateY(-2px) scale(1.02); }
 
-  /* Project thumbnails: drifting glass bubbles */
   .project-thumb::before{ animation:thumbFloat 8s ease-in-out infinite; }
   .project-thumb::after{ animation:thumbFloat 10s ease-in-out -3s infinite reverse; }
   @keyframes thumbFloat{ 0%,100%{translate:0 0} 50%{translate:10px -10px} }
 
-  /* Cursor-following glass glare (mouse devices only) */
   @media (hover:hover){
     .project-card::after, .timeline-card::after, .stat-orb::after{
       content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none; opacity:0; transition:opacity .45s var(--ease-out);
@@ -620,7 +590,6 @@
     .project-card:hover::after, .timeline-card:hover::after, .stat-orb:hover::after{ opacity:1; }
   }
 
-  /* Low-power devices: keep the look, drop the ambient extras */
   .lite body::before, .lite .hero-cloud, .lite .wave-divider,
   .lite .avatar-orb::before, .lite .avatar-orb::after,
   .lite .project-thumb::before, .lite .project-thumb::after{ animation:none; }
@@ -628,7 +597,6 @@
   .lite .project-card::after, .lite .timeline-card::after, .lite .stat-orb::after{ display:none; }
 
 
-  /* ---- Bubble burst when a nav link is clicked ---- */
   .pop-layer{ position:fixed; inset:0; z-index:102; pointer-events:none; overflow:hidden; }
   .pop-bubble{
     --c:31,143,224;
@@ -889,7 +857,6 @@
   try{
     if((navigator.hardwareConcurrency||8)<=2||(navigator.deviceMemory||8)<=2) root.classList.add('lite');
 
-    /* Nav highlight follows the section in view */
     if('IntersectionObserver' in window){
       var links=q('.nav-links a');
       var spy=new IntersectionObserver(function(es){ es.forEach(function(e){
@@ -899,7 +866,6 @@
     }
     if(reduced) return;
 
-    /* Scroll reveals: each element animates once, then its class is removed so hover styles take over cleanly */
     if(root.classList.contains('js')){
       q('.skill-chip').forEach(function(c,i){ c.style.setProperty('--i',i); });
       var io=new IntersectionObserver(function(es){ es.forEach(function(e){
@@ -915,7 +881,6 @@
       var g=q('.skills-grid')[0]; if(g) io.observe(g);
     }
 
-    /* Scroll progress + hero cloud parallax (one rAF-throttled passive listener) */
     var bar=d.createElement('div'); bar.className='scroll-progress'; bar.setAttribute('aria-hidden','true'); d.body.appendChild(bar);
     var clouds=q('.hero-cloud'), ticking=false, lite=root.classList.contains('lite');
     function frame(){
@@ -929,7 +894,6 @@
     addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } },{passive:true});
     frame();
 
-    /* Glass glare follows the mouse over cards */
     if(!lite && matchMedia('(hover:hover)').matches){
       var raf=0, ev;
       d.addEventListener('pointermove',function(e){
@@ -945,9 +909,6 @@
       },{passive:true});
     }
 
-    /* Bubble transitions: a soap-bubble burst at the clicked link, a rising bubble wave while the page
-       scrolls, and a small bounce on the section heading when you arrive. Web Animations API =
-       compositor-driven, and every bubble removes itself when finished. */
     if(d.documentElement.animate){
       var layer=d.createElement('div'); layer.className='pop-layer'; layer.setAttribute('aria-hidden','true'); d.body.appendChild(layer);
       var rnd=function(a,b){ return a+Math.random()*(b-a); };
@@ -967,19 +928,19 @@
         var a=e.target.closest && e.target.closest('a[href^="#"]');
         if(!a || d.hidden) return;
         var target=d.querySelector(a.getAttribute('href')), r=a.getBoundingClientRect(), n, i;
-        /* 1. burst: a fan of bubbles that swell and pop below the link */
+
         n=lite?8:14;
         for(i=0;i<n;i++){
           var ang=rnd(.15,.85)*Math.PI, dist=rnd(70,190);
           bubble(r.left+r.width/2, r.top+r.height/2, rnd(12,34), Math.cos(ang)*dist*1.3, Math.sin(ang)*dist, rnd(700,1200), rnd(0,120), true);
         }
         if(!target) return;
-        /* 2. wave: bubbles rise across the whole screen while we scroll */
+
         if(Math.abs(target.getBoundingClientRect().top)>200){
           var H=innerHeight, W=innerWidth; n=lite?12:26;
           for(i=0;i<n;i++){ var s=rnd(14,56); bubble(rnd(0,W), H+s, s, rnd(-50,50), -(H+s*2+rnd(0,80)), rnd(1100,1900), rnd(0,650), false); }
         }
-        /* 3. arrival: heading bounces once the scroll settles (uses `scale`, so it never fights other transforms) */
+
         var landed=false, h=target.querySelector('h2,h1');
         var arrive=function(){
           if(landed) return; landed=true;
