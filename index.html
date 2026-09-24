@@ -627,6 +627,18 @@
   .lite .bubble:nth-child(even){ display:none; }
   .lite .project-card::after, .lite .timeline-card::after, .lite .stat-orb::after{ display:none; }
 
+
+  /* ---- Bubble burst when a nav link is clicked ---- */
+  .pop-layer{ position:fixed; inset:0; z-index:102; pointer-events:none; overflow:hidden; }
+  .pop-bubble{
+    position:absolute; border-radius:50%; opacity:0; will-change:transform,opacity;
+    background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(255,255,255,.28) 45%, rgba(255,255,255,.06) 75%);
+    border:1px solid rgba(255,255,255,.75);
+    box-shadow:inset 0 0 8px rgba(255,255,255,.7), inset -3px -3px 7px rgba(31,214,200,.3), 0 3px 8px rgba(15,90,150,.14);
+  }
+  .nav-links a{ transition:background .35s var(--ease-out), color .35s var(--ease-out), transform .3s var(--ease-bubble); }
+  .nav-links a:active{ transform:scale(.92); }
+
 </style>
 <script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window)document.documentElement.classList.add('js')}catch(e){}</script>
 </head>
@@ -926,6 +938,51 @@
           el.style.setProperty('--my',(ev.clientY-r.top)+'px');
         });
       },{passive:true});
+    }
+
+    /* Bubble transitions: a soap-bubble burst at the clicked link, a rising bubble wave while the page
+       scrolls, and a small bounce on the section heading when you arrive. Web Animations API =
+       compositor-driven, and every bubble removes itself when finished. */
+    if(d.documentElement.animate){
+      var layer=d.createElement('div'); layer.className='pop-layer'; layer.setAttribute('aria-hidden','true'); d.body.appendChild(layer);
+      var rnd=function(a,b){ return a+Math.random()*(b-a); };
+      var bubble=function(x,y,size,dx,dy,dur,delay,pop){
+        var b=d.createElement('span'); b.className='pop-bubble';
+        b.style.width=b.style.height=size+'px'; b.style.left=(x-size/2)+'px'; b.style.top=(y-size/2)+'px';
+        layer.appendChild(b);
+        var a=b.animate([
+          {transform:'translate(0,0) scale(.2)', opacity:0},
+          {transform:'translate('+dx*.35+'px,'+dy*.35+'px) scale(1)', opacity:.95, offset:.25},
+          {transform:'translate('+dx*.9+'px,'+dy*.9+'px) scale(1.05)', opacity:.8, offset:.8},
+          {transform:'translate('+dx+'px,'+dy+'px) scale('+(pop?1.6:1.1)+')', opacity:0}
+        ],{duration:dur, delay:delay, easing:'cubic-bezier(.22,.8,.24,1)', fill:'both'});
+        a.onfinish=function(){ b.remove(); };
+      };
+      d.querySelector('.nav-glass').addEventListener('click',function(e){
+        var a=e.target.closest && e.target.closest('a[href^="#"]');
+        if(!a || d.hidden) return;
+        var target=d.querySelector(a.getAttribute('href')), r=a.getBoundingClientRect(), n, i;
+        /* 1. burst: a fan of bubbles that swell and pop below the link */
+        n=lite?8:14;
+        for(i=0;i<n;i++){
+          var ang=rnd(.15,.85)*Math.PI, dist=rnd(70,190);
+          bubble(r.left+r.width/2, r.top+r.height/2, rnd(9,28), Math.cos(ang)*dist*1.3, Math.sin(ang)*dist, rnd(700,1200), rnd(0,120), true);
+        }
+        if(!target) return;
+        /* 2. wave: bubbles rise across the whole screen while we scroll */
+        if(Math.abs(target.getBoundingClientRect().top)>200){
+          var H=innerHeight, W=innerWidth; n=lite?12:26;
+          for(i=0;i<n;i++){ var s=rnd(10,44); bubble(rnd(0,W), H+s, s, rnd(-50,50), -(H+s*2+rnd(0,80)), rnd(1100,1900), rnd(0,650), false); }
+        }
+        /* 3. arrival: heading bounces once the scroll settles (uses `scale`, so it never fights other transforms) */
+        var landed=false, h=target.querySelector('h2,h1');
+        var arrive=function(){
+          if(landed) return; landed=true;
+          if(h) h.animate([{scale:'.92'},{scale:'1.05',offset:.6},{scale:'1'}],{duration:700,easing:'cubic-bezier(.22,.8,.24,1)'});
+        };
+        addEventListener('scrollend',arrive,{once:true});
+        setTimeout(arrive,1300);
+      });
     }
   }catch(err){ root.classList.remove('js'); }
 })();
